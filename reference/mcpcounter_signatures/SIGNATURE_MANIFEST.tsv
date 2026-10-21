@@ -1,0 +1,3 @@
+file	source_url	sha256	size_bytes	retrieved_utc	mcpcounter_package_version
+genes.txt	https://raw.githubusercontent.com/ebecht/MCPcounter/master/Signatures/genes.txt	408f6c5d02c8f9bd2f1599c598367881853520934f8ce398a4886a8b296922bb	5342	2026-09-06 16:31:41 UTC	1.2.0
+probesets.txt	https://raw.githubusercontent.com/ebecht/MCPcounter/master/Signatures/probesets.txt	68778e6632fefac944127dba8d1ae1e8b8889ba36c71500776f8a7f00098c573	5147	2026-09-06 16:31:41 UTC	1.2.0

@@ -1,0 +1,14 @@
+function_name	status
+figure_cell_context	PASS
+figure_cluster_incremental	PASS
+figure_clustering	PASS
+figure_composition	PASS
+figure_discovery	PASS
+figure_enrichment	PASS
+figure_external	PASS
+figure_external_sensitivity	PASS
+figure_mediation	PASS
+figure_meta_sensitivity	PASS
+figure_mir146_conditional	PASS
+figure_specificity	PASS
+figure_survival	PASS

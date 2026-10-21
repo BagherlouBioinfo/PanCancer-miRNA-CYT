@@ -1,0 +1,10 @@
+metric	value
+"fixed_pairs"	47
+"fixed_miRNAs"	6
+"fixed_genes"	40
+"matched_external_samples"	101
+"finite_CYT"	101
+"valid_WES_purity"	96
+"mapped_selected_genes"	40
+"matched_mature_miRNAs"	6
+"exact_sample_id_overlap_with_discovery"	0

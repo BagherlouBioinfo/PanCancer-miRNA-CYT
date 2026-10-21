@@ -1,0 +1,21 @@
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+data/*
+!data/README.md
+results/*
+!results/README.md
+tests/output/
+reference/targets/*.zip
+*.partial
+*.log
+.DS_Store
+
+# Local backups and handoff archives
+/local_backups/
+*.before_path_fix
+/manuscript_outputs_review.tar.gz
+/figure_patch/
+*.part
+__pycache__/

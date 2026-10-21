@@ -1,0 +1,7 @@
+adjustment	arm	n_evaluable	planned_n
+"unadjusted"	"gene_cyt"	40	40
+"WES_purity"	"gene_cyt"	40	40
+"unadjusted"	"mirna_cyt"	6	6
+"WES_purity"	"mirna_cyt"	6	6
+"unadjusted"	"mirna_gene"	47	47
+"WES_purity"	"mirna_gene"	47	47

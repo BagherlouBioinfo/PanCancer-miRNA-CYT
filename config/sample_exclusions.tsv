@@ -1,0 +1,5 @@
+sample_id	scope	reason	evidence_report
+TCGA-23-1023-01	all_layers	Duplicated 15-character expression barcode from two vials with conflicting expression records; vial identity cannot be recovered	docs/SAMPLE_EXCLUSIONS.md
+TCGA-21-1076-01	all_layers	Duplicated 15-character expression barcode from two vials with conflicting expression records; vial identity cannot be recovered	docs/SAMPLE_EXCLUSIONS.md
+TCGA-06-0156-01	all_layers	Duplicated 15-character expression barcode from two vials with conflicting expression records; vial identity cannot be recovered	docs/SAMPLE_EXCLUSIONS.md
+TCGA-06-0211-01	all_layers	Duplicated 15-character expression barcode from two vials with conflicting expression records; vial identity cannot be recovered	docs/SAMPLE_EXCLUSIONS.md

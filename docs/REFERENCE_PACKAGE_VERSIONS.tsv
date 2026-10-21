@@ -1,0 +1,17 @@
+package	reference_version	note
+R	4.3.1	Original reported analysis environment
+data.table	1.16.4	Reported environment check
+digest	0.6.37	Reported environment check
+survival	3.8.3	Reported environment check
+cluster	2.1.8	Reported environment check
+TCGAbiolinks	2.30.4	Reported environment check; contains Tumor.purity
+metafor	4.8.0	Reported successful installation
+MCPcounter	1.2.0	Reported successful installation
+org.Hs.eg.db	3.18.0	Reported environment check
+GO.db	3.18.0	Reported environment check
+reactome.db	1.86.2	Reported environment check
+AnnotationDbi	1.64.1	Reported environment check
+httr2	1.0.7	Reported environment check
+jsonlite	1.8.9	Reported environment check
+ggplot2	3.5.1	Reported environment check
+sandwich	3.1.1	Reported environment check

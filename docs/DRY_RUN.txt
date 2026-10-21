@@ -1,0 +1,56 @@
+ number                                            file
+      1              01_configure_and_validate_inputs.R
+      2                      02_ingest_and_provenance.R
+      3                      03_harmonize_identifiers.R
+      4                       04_compute_validate_cyt.R
+      5                   05_define_eligible_features.R
+      6                        06_mirna_cyt_discovery.R
+      7               07_target_universe_construction.R
+      8              08_same_cancer_three_arm_testing.R
+      9                        09_recurrence_analysis.R
+     10                   10_purity_adjusted_analysis.R
+     11 11_purity_conflict_full_exclusion_sensitivity.R
+     12                12_immune_composition_analysis.R
+     13                 13_cross_cancer_meta_analysis.R
+     14                          14_survival_analysis.R
+     15              15_survival_endpoint_sensitivity.R
+     16                      16_exploratory_mediation.R
+     17              17_clustering_and_state_analysis.R
+     18       18_matched_null_target_specificity_test.R
+     19         19_mirna_seed_family_redundancy_check.R
+     20                      20_functional_enrichment.R
+     21                       21_drug_gene_annotation.R
+     22           22_cancer_specific_cellular_context.R
+     23 23_cancer_specific_cellular_context_corrected.R
+     24                        24_external_validation.R
+     25               25_cluster_incremental_survival.R
+     26                26_mir146_conditional_analysis.R
+     27                         27_figures_and_tables.R
+                                      stage_id
+              01_configure_and_validate_inputs
+                      02_ingest_and_provenance
+                      03_harmonize_identifiers
+                       04_compute_validate_cyt
+                   05_define_eligible_features
+                        06_mirna_cyt_discovery
+               07_target_universe_construction
+              08_same_cancer_three_arm_testing
+                        09_recurrence_analysis
+                   10_purity_adjusted_analysis
+ 11_purity_conflict_full_exclusion_sensitivity
+                12_immune_composition_analysis
+                 14_cross_cancer_meta_analysis
+                          15_survival_analysis
+              16_survival_endpoint_sensitivity
+                      17_exploratory_mediation
+              18_clustering_and_state_analysis
+            19_matched_null_target_specificity
+         20_mirna_seed_family_redundancy_check
+                      21_functional_enrichment
+                       22_drug_gene_annotation
+           23_cancer_specific_cellular_context
+ 24_cancer_specific_cellular_context_corrected
+                           external_validation
+                  cluster_incremental_survival
+                   mir146_conditional_analysis
+                            figures_and_tables

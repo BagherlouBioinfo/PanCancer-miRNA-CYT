@@ -1,0 +1,284 @@
+[PASS] All R files parse
+
+=== test_expression_preprocessing.R ===
+[PASS] EP01_already_log2 -- ok=TRUE transformed=FALSE consistent=TRUE
+[PASS] EP02_linear_transformed -- ok=TRUE transformed=TRUE value_match=TRUE
+[PASS] EP03_scale_misdeclared_linear -- consistent=FALSE
+[PASS] EP04_extreme_outlier_flagged -- consistent=FALSE max=999999
+[PASS] EP05_technical_duplicate_resolved -- ok=TRUE n_dup_groups=1 classification=technical_duplicate n_out_cols=3
+[PASS] EP06_conflicting_duplicate_stops -- ok=FALSE stage=duplicate_column_conflict
+[PASS] EP07_aliquot_duplicate_resolved -- ok=TRUE n_aliquot_groups=1 dropped=TCGA-02-0001-01A-11-123-07
+[PASS] EP08_non_numeric_reported -- n_newly_na_from_coercion=1
+[PASS] EP08b_expected_missingness_not_overcounted -- n_newly_na_from_coercion=0
+[PASS] EP09_duplicate_gene_symbol_highest_variance -- n_rows_out=1
+[PASS] EP10_zero_variance_removed -- n_features_out=1 n_zero_variance_removed=1
+[PASS] EP11_winsorize_matrix_rows -- clipped_value=61.60
+[PASS] EP12_shuffled_sample_order -- order_independent=TRUE
+[PASS] EP13_distinct_mirna_mrna_policy -- mirna: declared=log2 transformed=FALSE | mrna: declared=linear transformed=TRUE
+[PASS] EP14_standardization_applies_to_every_position -- standardized_names=TCGA-02-0001-01A,TCGA-02-0001-01A,TCGA-02-0002-01A
+[PASS] EP15_clinical_duplicate_rows_classified -- identical_case=technical_duplicate differing_case=conflicting_record
+[PASS] EP16_all_na_variance_duplicate_group_not_silently_dropped -- nrow=1 GENE present=TRUE
+[PASS] EP17_single_non_na_value_per_row_duplicate_group_not_silently_dropped -- nrow=1 GENE2 present=TRUE
+[PASS] EP18_normal_highest_variance_tiebreak_unaffected -- kept row values: 1,1,100 (expected 1,1,100 -- the highest-variance row)
+[PASS] EP19_tied_variance_deterministic_first_row_unaffected -- kept row values: 1,2,3 (expected 1,2,3 -- the first-occurring row)
+
+20/20 PASS, 0 FAIL
+
+=== test_pairwise_complete_spearman.R ===
+[PASS] A1_no_missing -- rho: ref=0.486867 own=0.486867 | p: ref=0.001443 own=0.001443 | n: ref=40 own=40
+[PASS] A2_predictor_missing -- rho: ref=0.447368 own=0.447368 | p: ref=0.0055 own=0.0055 | n: ref=37 own=37
+[PASS] A3_outcome_missing -- rho: ref=0.437885 own=0.437885 | p: ref=0.006718 own=0.006718 | n: ref=37 own=37
+[PASS] A4_different_missingness_per_row -- row1 n=38/38 row2 n=37/37 row3(clean) n=40/40
+[PASS] A5_ties_plus_missing -- rho: ref=0.331094 own=0.331094 | p: ref=0.2475 own=0.2475 | n: ref=14 own=14
+[PASS] A6_insufficient_paired_n -- cor=NA n=25 non_estimable=TRUE
+[PASS] A7_zero_variance_after_restriction -- cor=NA n=17 non_estimable=TRUE
+[PASS] A7b_zero_variance_in_x -- cor=NA non_estimable=TRUE
+[PASS] A8_all_values_missing -- cor=NA n=0 non_estimable=TRUE
+[PASS] A9_na_nan_inf_mixed -- rho: ref=0.489060 own=0.489060 | p: ref=0.002471 own=0.002471 | n: ref=36 own=36
+[PASS] A9b_na_nan_inf_in_x -- rho: ref=0.504267 own=0.504267 | p: ref=0.001461 own=0.001461 | n: ref=37 own=37
+[PASS] B1_ranks_recomputed_not_deleted_from_global -- own=1.000000 correct_reref=1.000000 wrong_global_then_delete=0.992286 (own must equal the 2nd, differ from the 3rd)
+[PASS] B2_ranks_recomputed_in_fallback_branch -- own=1.000000 ref=1.000000
+[PASS] C1_reported_n_matches_actual_paired_n -- affected row n=35 (expected 35), clean row n=40 (expected 40)
+[PASS] D1_bh_fdr_denominator_excludes_non_estimable -- max diff on estimable entries=0.00e+00, NA positions stayed NA: TRUE, output length=20 (expected 20)
+[PASS] E1_single_na_does_not_propagate_to_whole_row -- row 2 (2 missing inputs): 2 NA position(s) in the output (expected exactly 2, at positions 4 and 15)
+[PASS] E2_clean_row_unchanged_by_fix -- clean row matches the direct closed-form OLS computation to 1e-9
+[PASS] E3_affected_row_matches_independent_lm_on_its_own_subset -- max diff=0.00e+00
+[PASS] E4_covariate_missingness_still_fails_loudly -- error: residualize_matrix(): covariate contains 1 non-finite value(s) out of 20. The caller must restrict to samples with a finite covariate value before calling this function -- this has always been this function's contract (every existing caller pre-filters its index set on the covariate); it is Y, not covariate, that may legitimately contain missing values per-row (see the pairwise-complete fallback below).
+[PASS] F1_residualize_then_correlate_end_to_end -- affected-gene arm: cor=0.01754386 n=18 non_estimable=FALSE (expected non-NA cor, n=18)
+[SKIPPED] RD1_real_fully_complete_combination -- No from-scratch run with a COMPLETE Stage 05 found under runs/ -- skipped, not failed
+[SKIPPED] RD2_real_affected_combination -- No from-scratch run with a COMPLETE Stage 05 found under runs/ -- skipped, not failed
+[SKIPPED] RD3_real_heavily_missing_feature -- No from-scratch run with a COMPLETE Stage 05 found under runs/ -- skipped, not failed
+[SKIPPED] RD4_real_boundary_case -- No from-scratch run with a COMPLETE Stage 05 found under runs/ -- skipped, not failed
+
+20/24 PASS, 4 SKIPPED, 0 FAIL
+
+=== test_spearman_pvalue_equivalence.R ===
+[PASS] SP01_n30_no_effect -- rho: ref=-0.195551 own=-0.195551 (diff=0.00e+00) | p: ref=0.300387 own=0.300387
+[PASS] SP02_n30_weak -- rho: ref=0.008231 own=0.008231 (diff=0.00e+00) | p: ref=0.965566 own=0.965566
+[PASS] SP03_n30_moderate -- rho: ref=0.574194 own=0.574194 (diff=0.00e+00) | p: ref=0.0009066 own=0.0009066
+[PASS] SP04_n30_strong -- rho: ref=0.985317 own=0.985317 (diff=0.00e+00) | p: ref=4.84721e-23 own=4.84721e-23
+[PASS] SP05_n30_negative -- rho: ref=-0.867408 own=-0.867408 (diff=0.00e+00) | p: ref=5.54873e-10 own=5.54873e-10
+[PASS] SP06_n5 -- rho: ref=0.000000 own=0.000000 (diff=0.00e+00) | p: ref=1 own=1
+[PASS] SP07_n10 -- rho: ref=-0.284848 own=-0.284848 (diff=0.00e+00) | p: ref=0.425038 own=0.425038
+[PASS] SP08_ties_n15 -- rho: ref=0.042885 own=0.042885 (diff=0.00e+00) | p: ref=0.879382 own=0.879382
+[PASS] SP09_n500 -- rho: ref=0.350946 own=0.350946 (diff=0.00e+00) | p: ref=6.14739e-16 own=6.14739e-16
+[PASS] SP10_perfect_positive -- rho: ref=1.000000 own=1.000000 (diff=0.00e+00) | p: ref=1.0635e-62 own=0
+[PASS] SP11_perfect_negative -- rho: ref=-1.000000 own=-1.000000 (diff=0.00e+00) | p: ref=1.70161e-61 own=0
+[PASS] SP12_near_perfect_one_swap -- rho: ref=0.998496 own=0.998496 (diff=0.00e+00) | p: ref=3.71363e-24 own=3.71363e-24
+[PASS] SP13_vectorized_matches_scalar -- max cor diff=0.00e+00, max p diff=1.11e-16
+
+13/13 PASS, 0 SKIPPED, 0 FAIL
+
+=== test_cell_context_helpers.R ===
+[PASS] S1_interaction_truly_present_detected -- estimable=TRUE p_int=7.761e-58 slope_low=-0.345 slope_high=1.364
+[PASS] S2_no_interaction_present_not_significant -- estimable=TRUE p_int=0.1904
+[PASS] S3_relationship_only_in_high_composition -- p_int=1.714e-24 slope_low=-0.157 slope_high=1.218 | tertile rho low=-0.143 high=0.964
+[PASS] S4_relationship_only_in_low_composition -- p_int=3.409e-17 slope_low=1.150 slope_high=-0.089 | tertile rho low=0.907 high=-0.062
+[PASS] S5a_all_missing_predictor_not_estimable -- estimable=FALSE n=0
+[PASS] S5b_below_min_n_after_missingness_removed_not_estimable -- estimable=FALSE n=25 (expected n=25, below min_n=30)
+[PASS] S5c_zero_variance_predictor_not_estimable -- estimable=FALSE
+[PASS] S6a_signature_gene_flagged_tautological -- checked CD3D against T cells (a real marker)
+[PASS] S6b_signature_gene_not_flagged_for_different_population -- checked CD3D against Monocytic lineage (not a marker there)
+[PASS] S6c_non_signature_gene_never_flagged -- checked SOCS1 (not in sig_map) against T cells
+[PASS] S6d_case_insensitive_gene_match -- checked lowercase 'cd3d' against T cells
+[PASS] S6e_classify_cell_context_returns_tautological_exclusion -- verdict=tautological_exclusion
+[PASS] S7a_shuffled_sample_order_gives_identical_result -- unshuffled p_int=7.76128e-58 shuffled p_int=7.76128e-58
+[PASS] S7b_shuffled_order_tertile_stratification_identical -- unshuffled rhos=-0.5603,0.9383,0.9703 shuffled rhos=-0.5603,0.9383,0.9703
+[PASS] V1_composition_enriched_hand_worked -- verdict=composition_enriched
+[PASS] V2_composition_depleted_hand_worked -- verdict=composition_depleted
+[PASS] V3_stable_across_composition_hand_worked -- verdict=stable_across_composition
+[PASS] V4_not_detected_hand_worked -- verdict=not_detected
+[PASS] V5_not_evaluable_when_any_required_arm_non_estimable -- verdict=not_evaluable
+
+19/19 PASS, 0 FAIL
+
+=== test_cell_context_corrected_helpers.R ===
+[PASS] H1_hc3_se_matches_sandwich_package_homoscedastic -- production SE=0.0426511690, independent reference SE=0.0426511690, diff=0.00e+00
+[PASS] H2_hc3_se_matches_sandwich_heteroscedastic_and_differs_from_OLS -- HC3 SE=0.064793, OLS SE=0.055939, reference HC3=0.064793
+[PASS] H3_purity_confound_no_spurious_interaction -- p_interaction_hc3=0.9443 (expected > 0.05)
+[PASS] C1_conjunction_is_max_known_values -- max(0.001,0.20,0.03)=0.2000, max(0.5,0.5,0.5)=0.5000
+[PASS] C2_conjunction_NA_if_any_arm_missing -- all three missing-arm variants correctly return NA
+[PASS] C3_one_arm_alternative_not_classified_supported -- conjunction FDR(one-arm scenario)=0.9733 (expected >= 0.05)
+[PASS] C4_two_arm_alternative_not_classified_supported -- conjunction FDR(two-arm scenario)=0.9733 (expected >= 0.05)
+[PASS] C5_three_arm_alternative_classified_supported -- conjunction FDR(three-arm scenario)=1.624e-05 (expected < 0.05)
+[PASS] B1_global_BH_matches_base_R -- byte-identical to p.adjust(method='BH')
+[PASS] B2_global_BY_matches_base_R -- byte-identical to p.adjust(method='BY')
+[PASS] O1_direct_tautology_known_answer -- CD8A vs CD8 T cells -> direct_tautology
+[PASS] O2_cyt_overlap_known_answer -- SPI1 vs NK cells (non-marker) -> CYT_biological_overlap
+[PASS] O3_nonoverlapping_known_answer -- SPI1 vs Fibroblasts -> nonoverlapping_population
+[PASS] O4_direct_tautology_takes_priority -- CD3D vs T cells (its own marker, also a CYT-overlap population) -> direct_tautology, not CYT_biological_overlap
+[PASS] P1_correlated_pairs_known_answer -- found 2 pairs: B-A=0.90, C-B=0.75
+[PASS] P2_no_correlated_pairs_empty_result -- 0 rows for an uncorrelated 2x2 matrix
+[PASS] PC1_near_perfectly_correlated_columns -- cor(PC1, base_col)=-1.000000
+[PASS] VIF1_near_collinear_terms_have_huge_vif -- VIF(z1)=8396.6, VIF(z2)=8396.5, VIF(z3)=1.00
+[PASS] VIF2_independent_predictors_vif_near_one -- VIF(z1)=1.001, VIF(z3)=1.001 (expected both < 1.5)
+[PASS] M1_missing_values_dropped_pairwise_not_crashed -- n after dropping 20 NAs=280 (expected 280)
+[PASS] M2_below_min_n_not_estimable -- estimable=FALSE, reason=insufficient_n
+[PASS] M3_zero_variance_purity_not_estimable -- estimable=FALSE, reason=zero_variance
+[PASS] M4_shuffled_sample_order_gives_identical_result -- beta diff=1.67e-16, p diff=2.54e-32
+[PASS] PERM1_calibration_under_true_null -- observed rate=0.040, nominal=0.05, MC SE=0.0154, n_valid=200
+
+24/24 PASS, 0 FAIL
+
+=== test_mediation_triplet_rollup.R ===
+[PASS] K1_n_contexts -- got 4, expected 4
+[PASS] K1_nominal_sig -- n=3 pct=75.0000
+[PASS] K1_fdr05 -- n=2 pct=50.0000
+[PASS] K1_fdr01 -- n=1 pct=25.0000
+[PASS] K1_min_median_fdr -- min=0.005000 median=0.045000
+[PASS] K1_prop_mediated_stats -- min=0.1000 median=0.4000 max=0.9000 range=0.8000
+[PASS] K1_meaningful -- n=2 pct=50.0000
+[PASS] K1_direction_consistent_true -- consistent=TRUE n_distinct=1
+[PASS] K2_direction_inconsistent -- consistent=FALSE n_distinct=2
+[PASS] K3_three_distinct_triplets -- got 3 rows (expected 3)
+[PASS] K3_group_row_counts_isolated -- hsa-mir-X=4, hsa-mir-Y=2, hsa-mir-Z=1
+[PASS] K3_supporting_cancers_string -- AAA;BBB;CCC;DDD
+[PASS] B1_single_context_boundary -- n=1 min=0.50 median=0.50 max=0.50 range=0.00 pct_nominal=100.0
+[PASS] M1_na_raises_loud_error -- compute_mediation_triplet_rollup(): required column(s) contain NA and would be silently excluded by a naive aggregation -- refusing: raw_bootstrap_p=1
+[PASS] D1_duplicate_key_raises_loud_error -- compute_mediation_triplet_rollup(): input contains 1 duplicated (mirna_id, gene, cancer) key(s) -- refusing to aggregate over an ambiguous input (grou
+[PASS] E1_empty_input_raises_loud_error -- compute_mediation_triplet_rollup(): input has zero rows -- nothing to aggregate.
+[PASS] C1_missing_column_raises_loud_error -- compute_mediation_triplet_rollup(): input is missing required column(s): bh_fdr
+[SKIP] R1_real_data_matches_independent_reaggregation -- Optional real-data spot check not requested or completed result absent; synthetic checks are reported separately
+
+17/18 PASS, 0 FAIL, 1 SKIP
+
+=== test_stage16_kmeans_convergence.R ===
+[PASS] SYN1_easy_data_invariant_zero_warnings -- n_warnings_base=0, ARI base-vs-10x=1.000000, invariant=TRUE
+[PASS] SYN2_checker_detects_genuine_nonconvergence -- ARI base-vs-100x=0.126604, invariant=FALSE (expected FALSE)
+[SKIP] RD1_real_chosen_k_invariant -- Optional real-data clustering spot check not requested or completed result absent
+[SKIP] RD2_real_null_draw_winner_invariant -- Optional real-data clustering spot check not requested or completed result absent
+
+2/4 PASS, 0 FAIL, 2 SKIP
+
+=== test_runtime.R ===
+[PASS] stable results directory
+[PASS] context can reconnect without creating a new run
+[PASS] incomplete producer rejected
+[PASS] verified artifact accepted
+[PASS] wrong generating stage rejected
+[PASS] changed upstream input rejected
+[PASS] modified artifact rejected
+[PASS] latest failed status overrides earlier completion
+[PASS] path traversal rejected
+[PASS] nonexistent leaf through escaping symlink rejected
+
+[START] 01 01_fake.R
+[COMPLETE] 01
+
+[START] 02 02_fake.R
+[PASS] runner stops on failure
+
+[START] 02 02_fake.R
+[COMPLETE] 02
+
+Results: /tmp/RtmpWwayv8/runtime_test_540086eb/results 
+[PASS] failed stage resumes without rewriting earlier output
+[PASS] resumed stage completes
+[SKIP] 01 01_fake.R: verified complete
+[SKIP] 02 02_fake.R: verified complete
+
+Results: /tmp/RtmpWwayv8/runtime_test_540086eb/results 
+[PASS] verified completed stages are skipped
+
+[START] 01 01_fake.R
+[COMPLETE] 01
+
+Results: /tmp/RtmpWwayv8/runtime_test_540086eb/results 
+[PASS] rerun producer invalidates downstream completion
+[PASS] execution lock removed after success or failure
+
+=== test_integrated_addons.R ===
+OS / BRCA / CYT_age_sex
+OS / BRCA / CYT_age_sex_stage
+OS / LUAD / CYT_age_sex
+OS / LUAD / CYT_age_sex_stage
+DSS / BRCA / CYT_age_sex
+DSS / BRCA / CYT_age_sex_stage
+DSS / LUAD / CYT_age_sex
+DSS / LUAD / CYT_age_sex_stage
+PFI / BRCA / CYT_age_sex
+PFI / BRCA / CYT_age_sex_stage
+PFI / LUAD / CYT_age_sex
+PFI / LUAD / CYT_age_sex_stage
+COMPLETE: /tmp/RtmpWwayv8/integrated_addons_53f8758d/results/cluster_survival
+CPE / BRCA / CYT
+CPE / BRCA / CD3D
+CPE / BRCA / SPI1
+CPE / LUAD / CYT
+CPE / LUAD / CD3D
+CPE / LUAD / SPI1
+LUMP / BRCA / CYT
+LUMP / BRCA / CD3D
+LUMP / BRCA / SPI1
+LUMP / LUAD / CYT
+LUMP / LUAD / CD3D
+LUMP / LUAD / SPI1
+COMPLETE: /tmp/RtmpWwayv8/integrated_addons_53f8758d/results/mir146
+[PASS] Integrated cluster-survival and miR-146 entry points, context readers, paths, figures and output manifests
+
+=== test_structure.R ===
+[PASS] 27-stage registry, 111 distinct static output paths, known producer dependencies, unchanged scientific configuration and incomplete-cache rejection
+
+=== test_addon.R ===
+[PASS] synthetic estimable model
+[PASS] identical baseline/full sample size
+[PASS] constant nuisance omitted
+[PASS] LRT matches independent direct model
+[PASS] known positive cluster effect recovered
+[PASS] global and cluster-specific PH diagnostics
+[PASS] minimum sample guard
+[PASS] event-per-parameter guard
+[PASS] single-cluster guard
+[PASS] zero events in one cluster rejected
+[PASS] time-varying joint 2-df comparison
+[PASS] time-varying cluster coefficient exists
+[PASS] same time-varying nuisance adjustment in baseline
+[PASS] ID matching independent of row order
+[PASS] AJCC and clinical coalescing
+[PASS] missing sample rejected
+[PASS] duplicate sample rejected
+[PASS] cancer disagreement rejected
+[PASS] non-estimable attempted tests retained in BH denominator
+
+19 checks PASS
+
+=== test_mir146.R ===
+[PASS] complementary synthetic model estimable
+[PASS] both synthetic effects detected
+[PASS] known effect directions recovered
+[PASS] HC3 covariance matches independent row-wise calculation
+[PASS] partial rank correlation matches independent residual calculation
+[PASS] delta R2 matches direct nested fits
+[PASS] incremental in-sample R2 nonnegative
+[PASS] identical miRNAs rejected as unidentifiable
+[PASS] constant purity cannot masquerade as adjustment
+[PASS] minimum sample requirement
+[PASS] joint complete cases exclude nonfinite observations
+[PASS] unequal vectors rejected
+[PASS] expression extraction preserves requested sample order
+[PASS] duplicate expression ID rejected
+[PASS] missing expression feature rejected
+
+15 tests PASS
+
+=== test_stage25.R ===
+[PASS] Spearman matches cor.test
+[PASS] Non-finite observations excluded before ranking
+[PASS] Insufficient samples are not nonsignificant results
+[PASS] Constant features rejected
+[PASS] Perfect negative relationship retained
+[PASS] Invalid boolean rejected
+[PASS] Boolean missingness does not select rows
+[PASS] Duplicate hypothesis keys rejected
+[PASS] Missing hypotheses stay in planned BH family
+[PASS] BY sensitivity is not smaller than BH
+[PASS] Partial Spearman matches independent rank residual refit
+[PASS] Constant adjustment cannot be reported as adjusted
+[PASS] Empty external features are non-estimable
+[PASS] Winsorisation preserves missingness
+[PASS] Only qualifies TRUE rows frozen
+[PASS] Mixed discovery runs rejected
+
+16 checks PASS
+
+All 13 synthetic/numerical/integration test files passed.

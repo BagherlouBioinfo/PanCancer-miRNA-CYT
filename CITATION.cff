@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Please cite this code repository and the associated study when using these analyses."
+type: software
+title: "PanCancer-miRNA-CYT: recurrent microRNA–gene associations with tumour cytolytic activity"
+version: 1.0.0
+repository-code: "https://github.com/BagherlouBioinfo/PanCancer-miRNA-CYT"
+license: MIT
+authors:
+  - family-names: Aliyari
+    given-names: Shahram
+  - family-names: Bagherlou
+    given-names: Nazanin
+  - family-names: Pirouzkhah
+    given-names: Mobin
+  - family-names: Salehi
+    given-names: Zahra
+  - family-names: Weis
+    given-names: Cleo-Aron

@@ -1,0 +1,11 @@
+*.R text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.tsv text eol=lf
+*.Rproj text eol=lf
+# Signature/reference manifests and archived result hashes refer to exact bytes.
+/reference/** -text
+*.png binary
+*.pdf binary
+*.xlsx binary

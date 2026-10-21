@@ -1,0 +1,9 @@
+setting	outcome_type	mirna_id	attempted	estimated	BH_supported	BY_supported	VIF_over_10
+"CPE"	"CYT"	"hsa-miR-146a-5p"	20	20	15	13	0
+"CPE"	"CYT"	"hsa-miR-146b-5p"	20	20	8	7	0
+"CPE"	"shared_gene"	"hsa-miR-146a-5p"	80	80	63	54	0
+"CPE"	"shared_gene"	"hsa-miR-146b-5p"	80	80	40	34	0
+"LUMP"	"CYT"	"hsa-miR-146a-5p"	19	19	12	12	0
+"LUMP"	"CYT"	"hsa-miR-146b-5p"	19	19	8	6	0
+"LUMP"	"shared_gene"	"hsa-miR-146a-5p"	76	76	63	51	0
+"LUMP"	"shared_gene"	"hsa-miR-146b-5p"	76	76	42	33	0
