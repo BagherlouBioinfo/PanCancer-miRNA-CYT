@@ -20,19 +20,6 @@ do not establish direct microRNA regulation or clinical utility.
 | External assessment | CPTAC breast tumours: 101 samples; 96 with WES-derived purity |
 | Interpretation | Immune-linked co-expression; no demonstrated target specificity |
 
-## Authors and correspondence
-
-| Author | Affiliation |
-|---|---|
-| Nazanin Bagherlou | Computational Pathology, Institute of Pathology, University Hospital Heidelberg, Heidelberg University, Germany |
-| Shahram Aliyari | Computational Pathology, Institute of Pathology, University Hospital Heidelberg, Heidelberg University, Germany |
-| Mobin Pirouzkhah | Cell Therapy and Haematopoietic Stem Cell Transplantation Research Centre, Tehran University of Medical Sciences, Iran |
-| Zahra Salehi | Cell Therapy and Haematopoietic Stem Cell Transplantation Research Centre; Haematology, Oncology and Stem Cell Transplantation Research Centre, Tehran University of Medical Sciences, Iran |
-| Cleo-Aron Weis | Computational Pathology, Institute of Pathology, University Hospital Heidelberg, Heidelberg University, Germany |
-
-**Primary correspondence:** Shahram Aliyari — [aliyari.shahram@gmail.com](mailto:aliyari.shahram@gmail.com).  
-**Co-correspondence:** Zahra Salehi — [zahra.salehi6463@yahoo.com](mailto:zahra.salehi6463@yahoo.com).
-
 ## Analytical framework
 
 Discovery is performed within individual cancer types. A predicted miRNA–gene
@@ -60,6 +47,63 @@ Key reported observations:
 These observations support reproducible immune-linked expression patterns.
 They do not establish target-specific regulation, validated immune subtypes
 or clinical prediction.
+
+## Workflow
+
+The diagram shows the scientific analysis sequence. The four branches all
+start from the fixed primary set; external assessment does not select a new
+set of pairs. Stage numbers refer to the current repository scripts.
+
+```mermaid
+flowchart TD
+    A["TCGA inputs: miRNA, mRNA and clinical data"] --> B["01–05 · Validate, harmonise and calculate CYT"]
+    B --> C["Matched cohort: 9,286 tumours across 31 cancers"]
+    C --> D["06–10 · TargetScan integration and within-cancer testing"]
+    D --> E["Primary CPE analysis: 20 eligible cancers"]
+    E --> F{"All three arms meet |ρ| ≥ 0.30 and BH-FDR < 0.05 in the same cancer?"}
+    F -->|No| X["Not counted as primary support"]
+    F -->|Yes| G{"Support in at least three cancers?"}
+    G -->|No| Y["Outside the recurrent primary set"]
+    G -->|Yes| H["Fixed primary set: 47 pairs · 6 miRNAs · 40 genes"]
+    H --> I["11–12, 18–19 · Sensitivity, specificity and redundancy"]
+    H --> J["13–17, 20–21, 25–26 · Pooled and exploratory analyses"]
+    H --> K["22–23 · Cancer-specific cellular-context assessment"]
+    H --> L["24 · Independent CPTAC breast assessment without reselection"]
+    I --> M["Purity conflicts, LUMP, population scores and matched controls"]
+    J --> N["Meta-analysis, survival, mediation, clustering, miR-146 and annotation"]
+    K --> O["Corrected evidence funnel: 183 → 174 → 44 → 31 combinations; 19 pairs"]
+    L --> P["101 tumours; WES-purity sensitivity in 96"]
+    M --> Q["27 · Figures, tables, legends and editable source data"]
+    N --> Q
+    O --> Q
+    P --> Q
+    Q --> R["results/manuscript/ · Main figures 1–6 · Supplementary figures S1–S8"]
+    classDef input fill:#edf4fb,stroke:#466c91,color:#142c44,stroke-width:1.5px;
+    classDef decision fill:#fff5dc,stroke:#b98b31,color:#493710,stroke-width:1.5px;
+    classDef primary fill:#153c58,stroke:#153c58,color:#ffffff,stroke-width:2px;
+    classDef analysis fill:#e7f4f0,stroke:#418579,color:#183f38,stroke-width:1.5px;
+    classDef output fill:#eeeafa,stroke:#7d6baf,color:#322650,stroke-width:1.5px;
+    classDef excluded fill:#f4f4f4,stroke:#a1a1a1,color:#555555;
+    class A,B,C,D,E input;
+    class F,G decision;
+    class H primary;
+    class I,J,K,L,M,N,O,P analysis;
+    class Q,R output;
+    class X,Y excluded;
+```
+
+**Eligibility:** CPE and LUMP are handled separately, with at least 30 samples
+with valid purity and CYT within cancer. The primary set is defined under CPE;
+LUMP and lower effect-size thresholds remain sensitivity analyses. BH families
+are defined by the implemented cancer, arm, threshold and adjustment setting;
+shared hypotheses are counted once.
+
+**Execution:** the runner resolves dependencies from the stage registry.
+The branches above group scientific analyses, not independent parallel jobs.
+Stage 17 can be recomputed or imported from a compatible historical analysis
+with the checked importer. Importing is recorded explicitly.
+
+The editable diagram source is [docs/workflow.mmd](docs/workflow.mmd).
 
 ## Quick start
 
@@ -368,4 +412,17 @@ See [CITATION.cff](CITATION.cff) for citation metadata. This repository accompan
 “Recurrent microRNA–gene associations with tumour cytolytic activity and their
 sensitivity to immune composition”. No publication DOI is asserted here.
 
-Corresponding author: Shahram Aliyari — aliyari.shahram@gmail.com.
+---
+
+## Authors and correspondence
+
+| Author | Affiliation |
+|---|---|
+| Nazanin Bagherlou | Computational Pathology, Institute of Pathology, University Hospital Heidelberg, Heidelberg University, Germany |
+| Shahram Aliyari | Computational Pathology, Institute of Pathology, University Hospital Heidelberg, Heidelberg University, Germany |
+| Mobin Pirouzkhah | Cell Therapy and Haematopoietic Stem Cell Transplantation Research Centre, Tehran University of Medical Sciences, Iran |
+| Zahra Salehi | Cell Therapy and Haematopoietic Stem Cell Transplantation Research Centre; Haematology, Oncology and Stem Cell Transplantation Research Centre, Tehran University of Medical Sciences, Iran |
+| Cleo-Aron Weis | Computational Pathology, Institute of Pathology, University Hospital Heidelberg, Heidelberg University, Germany |
+
+**Primary correspondence:** Shahram Aliyari — [aliyari.shahram@gmail.com](mailto:aliyari.shahram@gmail.com).  
+**Co-correspondence:** Zahra Salehi — [zahra.salehi6463@yahoo.com](mailto:zahra.salehi6463@yahoo.com).

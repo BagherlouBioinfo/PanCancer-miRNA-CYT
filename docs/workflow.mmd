@@ -1,0 +1,35 @@
+flowchart TD
+    A["TCGA inputs: miRNA, mRNA and clinical data"] --> B["01–05 · Validate, harmonise and calculate CYT"]
+    B --> C["Matched cohort: 9,286 tumours across 31 cancers"]
+    C --> D["06–10 · TargetScan integration and within-cancer testing"]
+    D --> E["Primary CPE analysis: 20 eligible cancers"]
+    E --> F{"All three arms meet |ρ| ≥ 0.30 and BH-FDR < 0.05 in the same cancer?"}
+    F -->|No| X["Not counted as primary support"]
+    F -->|Yes| G{"Support in at least three cancers?"}
+    G -->|No| Y["Outside the recurrent primary set"]
+    G -->|Yes| H["Fixed primary set: 47 pairs · 6 miRNAs · 40 genes"]
+    H --> I["11–12, 18–19 · Sensitivity, specificity and redundancy"]
+    H --> J["13–17, 20–21, 25–26 · Pooled and exploratory analyses"]
+    H --> K["22–23 · Cancer-specific cellular-context assessment"]
+    H --> L["24 · Independent CPTAC breast assessment without reselection"]
+    I --> M["Purity conflicts, LUMP, population scores and matched controls"]
+    J --> N["Meta-analysis, survival, mediation, clustering, miR-146 and annotation"]
+    K --> O["Corrected evidence funnel: 183 → 174 → 44 → 31 combinations; 19 pairs"]
+    L --> P["101 tumours; WES-purity sensitivity in 96"]
+    M --> Q["27 · Figures, tables, legends and editable source data"]
+    N --> Q
+    O --> Q
+    P --> Q
+    Q --> R["results/manuscript/ · Main figures 1–6 · Supplementary figures S1–S8"]
+    classDef input fill:#edf4fb,stroke:#466c91,color:#142c44,stroke-width:1.5px;
+    classDef decision fill:#fff5dc,stroke:#b98b31,color:#493710,stroke-width:1.5px;
+    classDef primary fill:#153c58,stroke:#153c58,color:#ffffff,stroke-width:2px;
+    classDef analysis fill:#e7f4f0,stroke:#418579,color:#183f38,stroke-width:1.5px;
+    classDef output fill:#eeeafa,stroke:#7d6baf,color:#322650,stroke-width:1.5px;
+    classDef excluded fill:#f4f4f4,stroke:#a1a1a1,color:#555555;
+    class A,B,C,D,E input;
+    class F,G decision;
+    class H primary;
+    class I,J,K,L,M,N,O,P analysis;
+    class Q,R output;
+    class X,Y excluded;
