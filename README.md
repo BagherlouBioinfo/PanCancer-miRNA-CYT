@@ -1,10 +1,25 @@
 ![PanCancer-miRNA-CYT](docs/assets/banner.png)
 
 # Pan-cancer microRNA–gene associations with cytolytic activity
+[![DOI](https://img.shields.io/badge/DOI-10.1007%2Fs00262--026--04629--z-blue)](https://doi.org/10.1007/s00262-026-04629-z)
 
-R code for the revised study of recurrent microRNA–gene associations with
-tumour cytolytic activity (CYT), their sensitivity to immune composition,
-and assessment in an independent CPTAC breast cancer cohort.
+## Correspondence
+
+**Primary correspondence:** Shahram Aliyari  
+- Institutional email: [shahram.aliyari@med.uni-heidelberg.de](mailto:shahram.aliyari@med.uni-heidelberg.de)
+- Alternative email: [aliyari.shahram@gmail.com](mailto:aliyari.shahram@gmail.com)
+
+**Co-correspondence:** Zahra Salehi  
+- Email: [zahra.salehi6463@yahoo.com](mailto:zahra.salehi6463@yahoo.com)
+
+## Published Article
+
+**Recurrent microRNA–gene associations with tumour cytolytic activity and their sensitivity to immune composition**
+
+Published in **Cancer Immunology, Immunotherapy (2026)**.
+
+**Full-text article:** [Read the published article on Springer Nature](https://doi.org/10.1007/s00262-026-04629-z)
+R code for the published study of recurrent microRNA–gene associations with tumour cytolytic activity (CYT), their sensitivity to immune composition, and assessment in an independent CPTAC breast cancer cohort.
 
 The analyses describe associations in bulk tumour tissue. Recurrence,
 external association support, exploratory mediation and drug annotations
