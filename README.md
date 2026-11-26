@@ -1,29 +1,43 @@
 ![PanCancer-miRNA-CYT](docs/assets/banner.png)
 
 # Pan-cancer microRNA–gene associations with cytolytic activity
+
 [![DOI](https://img.shields.io/badge/DOI-10.1007%2Fs00262--026--04629--z-blue)](https://doi.org/10.1007/s00262-026-04629-z)
-
-## Correspondence
-
-**Primary correspondence:** Shahram Aliyari  
-- Institutional email: [shahram.aliyari@med.uni-heidelberg.de](mailto:shahram.aliyari@med.uni-heidelberg.de)
-- Alternative email: [aliyari.shahram@gmail.com](mailto:aliyari.shahram@gmail.com)
-
-**Co-correspondence:** Zahra Salehi  
-- Email: [zahra.salehi6463@yahoo.com](mailto:zahra.salehi6463@yahoo.com)
+[![Publication](https://img.shields.io/badge/Publication-Peer--reviewed-success)](https://doi.org/10.1007/s00262-026-04629-z)
 
 ## Published Article
 
 **Recurrent microRNA–gene associations with tumour cytolytic activity and their sensitivity to immune composition**
 
-Published in **Cancer Immunology, Immunotherapy (2026)**.
+**Journal:** Cancer Immunology, Immunotherapy (2026)  
+**Publisher:** Springer Nature  
+**DOI:** [10.1007/s00262-026-04629-z](https://doi.org/10.1007/s00262-026-04629-z)
 
-**Full-text article:** [Read the published article on Springer Nature](https://doi.org/10.1007/s00262-026-04629-z)
-R code for the published study of recurrent microRNA–gene associations with tumour cytolytic activity (CYT), their sensitivity to immune composition, and assessment in an independent CPTAC breast cancer cohort.
+[Access the published article](https://doi.org/10.1007/s00262-026-04629-z)
 
-The analyses describe associations in bulk tumour tissue. Recurrence,
-external association support, exploratory mediation and drug annotations
-do not establish direct microRNA regulation or clinical utility.
+## Repository Overview
+
+This repository provides the reproducible R-based analytical workflow accompanying our published study of recurrent microRNA–gene associations with tumour cytolytic activity (CYT) across human cancers.
+
+The analytical framework incorporates tumour purity adjustment, immune cell composition analysis, survival analysis, and external assessment in an independent CPTAC breast cancer cohort.
+
+The analyses characterise associations in bulk tumour tissue. Recurrent associations, external association support, exploratory mediation analyses, and drug annotations should not be interpreted as evidence of direct microRNA-mediated regulation or established clinical utility.
+
+## Correspondence
+
+For scientific enquiries regarding this study, please contact:
+
+**Primary Corresponding Author — Shahram Aliyari**
+
+- Institutional email: [shahram.aliyari@med.uni-heidelberg.de](mailto:shahram.aliyari@med.uni-heidelberg.de)
+- Alternative email: [aliyari.shahram@gmail.com](mailto:aliyari.shahram@gmail.com)
+
+**Co-corresponding Author — Zahra Salehi**
+
+- Email: [zahra.salehi6463@yahoo.com](mailto:zahra.salehi6463@yahoo.com)
+
+---
+
 
 ## Study at a glance
 
